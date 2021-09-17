@@ -1,6 +1,16 @@
 function App() {
   const [melons, setMelons] = React.useState({});
 
+  React.useEffect(() => {
+    fetch("/api/melons")
+      .then((response) => response.json())
+      .then((result) => {
+        setMelons(result);
+      });
+  }, []);
+
+  const [shoppingCart, setShoppingCart] = React.useState({});
+
   return (
     <ReactRouterDOM.BrowserRouter>
       <Navbar logo="/static/img/watermelon.png" brand="Ubermelon"/>
@@ -17,6 +27,16 @@ function App() {
       </div>
     </ReactRouterDOM.BrowserRouter>
   );
+}
+
+function addMelonToCart(melonCode) {
+  setShoppingCart((currentShoppingCart) => {
+    const newShoppingCart = Object.assign({}, currentShoppingCart);
+
+    // code to update cart here
+
+    return newShoppingCart;
+  })
 }
 
 ReactDOM.render(<App />, document.querySelector("#root"));

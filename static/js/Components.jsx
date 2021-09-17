@@ -14,13 +14,15 @@ function AllMelonsPage(props) {
   const melonCards = [];
 
   for (const melon of Object.values(melons)) {
+    console.log(melon)
     const melonCard = (
+
       <MelonCard
-        key="cren"
-        code="cren"
-        name="Crenshaw"
-        imgUrl="http://www.rareseeds.com/assets/1/14/DimRegular/crenshaw.jpg"
-        price={2}
+        key={melon.melon_code}
+        melon_code={melon.melon_code}
+        name={melon.name}
+        imgUrl={melon.image_url}
+        price={melon.price}
       />
     );
 
